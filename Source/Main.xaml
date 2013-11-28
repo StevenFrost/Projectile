@@ -1,8 +1,58 @@
-﻿<Window x:Class="Source.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Source.Main"
+        Title="Projectile" Height="650" Width="958" BorderBrush="White" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TopGrid" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100">
+            <Label x:Name="AngleLbl" Content="Angle" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="252,8,-269,0"/>
+            <Label x:Name="VelocityLbl" Content="Velocity" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="252,38,-269,0" />
+            <TextBox x:Name="AngleBox" HorizontalAlignment="Left" Margin="374,10,-319,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="80" Height="24" />
+            <TextBox x:Name="VelocityBox" HorizontalAlignment="Left" Margin="374,40,-319,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="90" Height="24" />
+            <Button x:Name="DisplayButton" Content="Display Path" HorizontalAlignment="Left" Margin="10,136,-70,-60" VerticalAlignment="Top" Width="160" Height="24" Click="DisplayButton_Click"/>
+            <Label x:Name="TimeLbl" Content="Time of flight:" HorizontalAlignment="Left" Margin="740,10,-723,0" VerticalAlignment="Top" Height="26" Width="83"/>
+            <Label x:Name="HeightLbl" Content="Height:" HorizontalAlignment="Left" Margin="740,38,-723,0" VerticalAlignment="Top" Height="26" Width="83" RenderTransformOrigin="0.482,0.462"/>
+            <Label x:Name="DistanceLbl" Content="Distance:" HorizontalAlignment="Left" Margin="740,67,-723,0" VerticalAlignment="Top" Height="26" Width="83" RenderTransformOrigin="1.036,0.538"/>
+            <Label x:Name="TimeContent" Content="0.000" HorizontalAlignment="Left" Margin="828,10,-786,0" VerticalAlignment="Top" Height="26" Width="58"/>
+            <Label x:Name="HeightContent" Content="0.000" HorizontalAlignment="Left" Margin="828,38,-786,0" VerticalAlignment="Top" Height="26" Width="58"/>
+            <Label x:Name="DistanceContent" Content="0.000" HorizontalAlignment="Left" Margin="828,67,-786,0" VerticalAlignment="Top" Height="26" Width="58" RenderTransformOrigin="1.036,0.538"/>
+            <Label x:Name="InitialAltLbl" Content="Initial altitude" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="252,67,-269,0" />
+            <TextBox x:Name="InitialAltBox" HorizontalAlignment="Left" Margin="374,69,-319,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="0" Height="24" />
+            <Label x:Name="AngleUnitLbl" Content="º" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="424,8,-359,0"/>
+            <Label x:Name="VelocityUnitLbl" Content="m/s" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="424,38,-359,0" />
+            <Label x:Name="InitialAltUnitLbl" Content="m" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="424,67,-359,0" />
+            <Button x:Name="AnimationButton" Content="Start Animation" HorizontalAlignment="Left" Margin="175,136,-235,-60" VerticalAlignment="Top" Width="160" Height="24" Click="AnimationButton_Click"/>
+            <Label x:Name="InitialDispLbl" Content="Initial displacement" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="252,96,-269,-24" />
+            <TextBox x:Name="InitialDispBox" HorizontalAlignment="Left" Margin="374,98,-319,-22" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="0" Height="24" />
+            <Label x:Name="InitialDispUnitLbl" Content="m" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="424,96,-359,-24" />
+            <Label x:Name="RestLbl" Content="Coef. restitution" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="496,38,-513,0"/>
+            <TextBox x:Name="RestBox" HorizontalAlignment="Left" Margin="618,40,-563,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="0.75" Height="24"/>
+            <Label x:Name="RestUnitLbl" Content="a.u." HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="668,38,-603,0"/>
+            <CheckBox x:Name="UseBouncesCheck" Content="Take further bounces into account" HorizontalAlignment="Left" Margin="496,13,-597,0" VerticalAlignment="Top" IsChecked="True"/>
+            <Label x:Name="BouncesLbl" Content="Num. bounces" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="117" Margin="496,67,-513,0"/>
+            <TextBox x:Name="BouncesBox" HorizontalAlignment="Left" Margin="618,69,-563,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="3" Height="24"/>
+            <Label x:Name="DistanceUnitLbl" Content="m" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="893,67,-828,0" />
+            <Label x:Name="AltitudeUnitLbl" Content="m" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="893,38,-828,0"/>
+            <Label x:Name="TimeUnitLbl" Content="s" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="893,10,-828,0"/>
+            <Label x:Name="FinalVelocityLbl" Content="Final velocity:" Margin="740,96,-723,-22" VerticalAlignment="Top" Height="26" RenderTransformOrigin="1.036,0.538" HorizontalAlignment="Left" Width="83"/>
+            <Label x:Name="FinalVelocityContent" Content="0.000" HorizontalAlignment="Left" Margin="828,96,-786,-22" VerticalAlignment="Top" Height="26" Width="58" RenderTransformOrigin="1.036,0.538"/>
+            <Label x:Name="FinalVelocityUnitLbl" Content="m/s" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="893,96,-828,-24"/>
+            <Label x:Name="GravitationalLbl" Content="Gravitational const." HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="120" Margin="10,8,-30,0"/>
+            <TextBox x:Name="GravitationalBox" HorizontalAlignment="Left" Margin="135,10,-80,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="9.81" Height="24"/>
+            <Label x:Name="GravitationalUnitLbl" Content="m/s" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="185,8,-120,0"/>
+            <Label x:Name="IncrementLbl" Content="X-axis increment" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="120" Margin="10,38,-30,0"/>
+            <TextBox x:Name="IncrementBox" HorizontalAlignment="Left" Margin="135,40,-80,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="0.5" Height="24"/>
+            <Label x:Name="IncrementUnitLbl" Content="m" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="185,38,-120,0"/>
+            <Button x:Name="ClearWindowButton" Content="Clear Path" HorizontalAlignment="Left" Margin="340,136,-400,-60" VerticalAlignment="Top" Width="160" Height="24" Click="ClearWindowButton_Click"/>
+            <Label x:Name="IntervalLbl" Content="Animation interval" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="120" Margin="10,67,-30,0"/>
+            <TextBox x:Name="IntervalBox" HorizontalAlignment="Left" Margin="135,69,-80,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Text="50" Height="24"/>
+            <Label x:Name="IntervalUnitLbl" Content="ms" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="35" Margin="185,67,-120,0"/>
+        </Grid>
+        <Canvas x:Name="DrawingCanvas" HorizontalAlignment="Left" Height="420" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="921" Background="#FFEAEAEA" />
+
     </Grid>
 </Window>

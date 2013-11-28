@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Source")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Projectile")]
+[assembly: AssemblyDescription("An application for displaying and animating the path of a projectile")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Source")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyProduct("Projectile")]
+[assembly: AssemblyCopyright("Copyright © Steven Frost 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
