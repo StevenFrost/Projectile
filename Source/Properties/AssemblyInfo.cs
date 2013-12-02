@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Projectile")]
-[assembly: AssemblyCopyright("Copyright © Steven Frost 2013")]
+[assembly: AssemblyCopyright("Copyright © 2013 Steven Frost")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
